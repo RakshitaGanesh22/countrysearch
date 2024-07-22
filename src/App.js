@@ -1,4 +1,4 @@
-import Styles from "./App.module.css";
+import "./App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ function App() {
   function Country(props) {
     const { name, flgImag, flagAltText } = props;
     return (
-      <div className={Styles.countryCard} >
+      <div className="countryCard">
         <img src={flgImag} alt={flagAltText} style={{ width: "100px", height: "100px" }} />
         <h2>{name}</h2>
       </div>
