@@ -1,4 +1,4 @@
-import './App.css';
+import Styles from "./App.module.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ function App() {
   function Country(props) {
     const { name, flgImag, flagAltText } = props;
     return (
-      <div className="countryCard" style={{
+      <div className={Styles.countryCard} style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
