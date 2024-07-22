@@ -5,12 +5,11 @@ import axios from "axios";
 function App() {
   const [data, updateData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [state, setState] = useState(true);
 
   function Country(props) {
     const { name, flgImag, flagAltText } = props;
     return (
-      <div style={{
+      <div className="countryCard" style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -38,6 +37,7 @@ function App() {
         setFilteredData(ApiData.data);
       } catch (err) {
         console.error("Error fetching data", err);
+        // Display error message to the user (optional)
       }
     }
     fetchData();
@@ -45,7 +45,6 @@ function App() {
 
   function handleInputChange(event) {
     let value = event.target.value.toLowerCase();
-    setState(false);
     setFilteredData(data.filter(ele => ele.name.common.toLowerCase().includes(value)));
   }
 
@@ -53,14 +52,18 @@ function App() {
     <div className="App">
       <input type="text" onChange={handleInputChange} />
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {filteredData.map(ele => (
-          <Country
-            key={ele.name.common}
-            name={ele.name.common}
-            flgImag={ele.flags.svg}
-            flagAltText={ele.name.common}
-          />
-        ))}
+        {filteredData.length > 0 ? (
+          filteredData.map(ele => (
+            <Country
+              key={ele.name.common}
+              name={ele.name.common}
+              flgImag={ele.flags.svg}
+              flagAltText={ele.name.common}
+            />
+          ))
+        ) : (
+          <p>No results found</p> // Show a message when no results are available
+        )}
       </div>
     </div>
   );
