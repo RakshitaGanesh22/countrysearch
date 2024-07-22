@@ -9,19 +9,7 @@ function App() {
   function Country(props) {
     const { name, flgImag, flagAltText } = props;
     return (
-      <div className={Styles.countryCard} style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "200px",
-        height: "200px",
-        border: "2px solid black",
-        borderRadius: "8px",
-        padding: "10px",
-        margin: "10px",
-        gap: "5px"
-      }}>
+      <div className={Styles.countryCard} >
         <img src={flgImag} alt={flagAltText} style={{ width: "100px", height: "100px" }} />
         <h2>{name}</h2>
       </div>
